@@ -1,5 +1,6 @@
 package com.hotel.pets.service;
 
+import com.hotel.pets.model.dto.CostOffersDto;
 import com.hotel.pets.model.entity.Offer;
 import com.hotel.pets.model.entity.TypeOffer;
 import com.hotel.pets.repository.OfferRepository;
@@ -17,6 +18,7 @@ public class HotelServiceImpl implements HotelService {
 
     private final OfferRepository offerRepository;
     private final OfferTypeRepository offerTypeRepository;
+    private final CostOffersService costOffersService;
 
     @Override
     public Map<String, List<Offer>> getOffers() {
@@ -24,8 +26,13 @@ public class HotelServiceImpl implements HotelService {
         Map<String, List<Offer>> offerListMap = new HashMap<>();
         typeOffers.forEach(typeOffer -> {
             var type = typeOffer.getName();
-            offerListMap.put(type, offerRepository.findOfferByTypeOfferName(type));
+            offerListMap.put(type, offerRepository.findOfferByTypeOfferNameAndAccess(type, true));
         });
         return offerListMap;
+    }
+
+    @Override
+    public List<CostOffersDto> getOffersCost() {
+        return costOffersService.getOffersCost();
     }
 }

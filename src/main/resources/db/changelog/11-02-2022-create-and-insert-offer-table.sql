@@ -29,6 +29,8 @@ values (3, 'Feeding and cleaning from 2 times a day. Massage of the cheeks, back
 insert into offers (id, description, name, access)
 values (4, 'In MyRedCat you can relax and take pictures.', 'Photo session in the hotel', true);
 
+insert into offers (id, description, name, access)
+values (5, 'Are you tired of wool in the house? You do not have time to go with the cat to the salon? ', 'Escort to the grummer', true);
 
 insert into type_offer
  (id, name )
@@ -38,6 +40,10 @@ insert into type_offer
  (id, name )
 values (2, 'Additional services');
 
+insert into type_offer
+(id, name )
+values (3, 'Extra services');
+
 insert into offers_type_offers(offer_id, offer_type_id)
 values (1, 1);
 insert into offers_type_offers(offer_id, offer_type_id)
@@ -46,3 +52,6 @@ insert into offers_type_offers(offer_id, offer_type_id)
 values (3, 2);
 insert into offers_type_offers(offer_id, offer_type_id)
 values (4, 2);
+
+insert into offers_type_offers(offer_id, offer_type_id)
+values (5, 3);

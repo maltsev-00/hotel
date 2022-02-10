@@ -33,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login")
-                .defaultSuccessUrl("/hotel", true)
+                .defaultSuccessUrl("/hotels", true)
                 .and()
                 .logout()
                 .invalidateHttpSession(true)

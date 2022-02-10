@@ -1,4 +1,4 @@
-package com.hotel.pets.model;
+package com.hotel.pets.model.dto;
 
 import com.hotel.pets.annotation.FieldMatch;
 import lombok.AllArgsConstructor;
