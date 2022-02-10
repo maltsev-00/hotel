@@ -22,15 +22,17 @@
                     <div class="card-body p-md-5">
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                <div th:if="${param.logout}">
+                                    <div class="alert alert-info">You have been logged out.</div>
+                                </div>
                                 <div th:if="${param.error}">
                                     <div class="alert alert-danger">Invalid username or
                                         password.
                                     </div>
                                 </div>
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log in</p>
-                                <form class="mx-1 mx-md-4">
-                                    <form th:action="@{/login}" method="post">
-
+                                <form th:action="@{/login}" method="post">
+                                    <form class="mx-1 mx-md-4">
                                         <div class="form-group">
                                             <label for="username" class="control-label">Email</label>
                                             <input type="text"
@@ -46,9 +48,10 @@
                                                    id="password" name="password"
                                                    placeholder="Password"/>
                                         </div>
-                                            <button type="submit"  class="btn btn-primary">Log in </button>
+                                        <button type="submit" class="btn btn-primary">Log in</button>
                                         &nbsp; &nbsp;
-                                        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp; &nbsp; &nbsp; &nbsp;
+                                        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
                                         <a href="/" th:href="@{/registration}">
                                             don't have an account ?</a>
                                     </form>

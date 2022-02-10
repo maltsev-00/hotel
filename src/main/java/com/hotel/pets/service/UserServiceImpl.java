@@ -8,6 +8,7 @@ import com.hotel.pets.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserConverter userConverter;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private static final String ROLE_USER = "ROLE_USER";
 
@@ -55,8 +57,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addUser(UserDto userDto) {
         User newUser = userConverter.convertToEntity(userDto);
-
         newUser.setRoles(List.of(new Role(ROLE_USER)));
+        newUser.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
         userRepository.save(newUser);
     }
 
