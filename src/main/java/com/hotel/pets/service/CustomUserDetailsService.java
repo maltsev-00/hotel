@@ -1,7 +1,7 @@
 package com.hotel.pets.service;
 
-import com.hotel.pets.model.Role;
-import com.hotel.pets.model.User;
+import com.hotel.pets.model.entity.Role;
+import com.hotel.pets.model.entity.User;
 import com.hotel.pets.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

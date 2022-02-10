@@ -1,6 +1,6 @@
 package com.hotel.pets.service;
 
-import com.hotel.pets.model.User;
+import com.hotel.pets.model.entity.User;
 import com.hotel.pets.model.UserDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,11 +1,10 @@
-package com.hotel.pets.model;
+package com.hotel.pets.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Collection;
@@ -20,12 +19,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq_gen")
     @SequenceGenerator(name = "users_seq_gen", sequenceName = "users_id_seq")
     private Long id;
-    @NotEmpty()
     private String name;
-    @NotEmpty
     private String email;
-    @NotEmpty
-    @Size(min = 4)
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

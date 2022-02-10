@@ -2,7 +2,7 @@ package com.hotel.pets.controller;
 
 import com.hotel.pets.model.PageName;
 import com.hotel.pets.model.Redirect;
-import com.hotel.pets.model.User;
+import com.hotel.pets.model.entity.User;
 import com.hotel.pets.model.UserDto;
 import com.hotel.pets.service.UserService;
 import lombok.RequiredArgsConstructor;

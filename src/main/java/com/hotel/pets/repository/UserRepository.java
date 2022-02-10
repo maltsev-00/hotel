@@ -1,7 +1,7 @@
 package com.hotel.pets.repository;
 
 
-import com.hotel.pets.model.User;
+import com.hotel.pets.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
