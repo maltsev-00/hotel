@@ -23,13 +23,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/js/**",
+                        "/static/**",
                         "/css/**",
                         "/img/**",
-                        "login",
+                        "/login",
                         "/webjars/**",
                         "/registration/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login")
                 .defaultSuccessUrl("/hotel", true)

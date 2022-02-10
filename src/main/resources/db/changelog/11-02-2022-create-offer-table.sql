@@ -19,24 +19,24 @@ create table offers_type_offers
 );
 
 insert into offers (id,description,name,access)
-values (1, 'Кормление и уборка от 2 раз в день.Массаж щечек, спинки, лапок, животика.Внимание, вычесывание, любовь – по умолчанию.', 'Уход', true);
+values (1, 'Feeding and cleaning from 2 times a day. Massage of the cheeks, back, legs, tummy. Attention, combing, love - by default.', 'Care', true);
 insert into offers  (id, description, name, access)
-values (2, 'Мы предоставляем вам возможность увидеть, как чувствует себя ваш питомец и чем он занят, когда вы о нем думаете. Спросить «Как он?» вы можете у нас в viber, telegram, facebook, Instagram, what’s up, e-mail, по телефону.', 'Видеонаблюдение', true);
+values (2, 'We give you the opportunity to see how your pet feels and what he is doing when you think about him. Ask "How is he?" you can contact us in viber, telegram, facebook, Instagram, what''s up, e-mail, by phone.', 'Video monitoring', true);
 
 insert into offers  (id, description, name, access)
-values (3, 'Кормление и уборка от 2 раз в день.Массаж щечек, спинки, лапок, животика.Внимание, вычесывание, любовь – по умолчанию.', 'Уход после несложных операций', true);
+values (3, 'Feeding and cleaning from 2 times a day. Massage of the cheeks, back, legs, tummy. Attention, combing, love - by default.', 'Care after minor surgeries', true);
 
 insert into offers (id, description, name, access)
-values (4, 'В MyRedCat можно и отдохнуть, и пофотографироваться.', 'Фотосессия в гостинице', true);
+values (4, 'In MyRedCat you can relax and take pictures.', 'Photo session in the hotel', true);
 
 
 insert into type_offer
  (id, name )
-values (1, 'Основные услуги');
+values (1, 'Basic services');
 
 insert into type_offer
  (id, name )
-values (2, 'Дополнительные услуги');
+values (2, 'Additional services');
 
 insert into offers_type_offers(offer_id, offer_type_id)
 values (1, 1);
