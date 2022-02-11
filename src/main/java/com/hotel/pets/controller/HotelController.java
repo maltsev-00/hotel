@@ -7,6 +7,7 @@ import com.hotel.pets.model.dto.QuestionUserDto;
 import com.hotel.pets.model.entity.MenuItem;
 import com.hotel.pets.service.HotelService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,7 @@ public class HotelController {
     private final HotelService hotelService;
 
     @GetMapping
-    public String mainPage(Model model) {
+    public String mainPage(Model model, Authentication authentication) {
         model.addAttribute("question", new QuestionUserDto());
         return PageName.HOME;
     }
@@ -51,8 +52,9 @@ public class HotelController {
     }
 
     @PostMapping("/booking")
-    public String saveBooking(@ModelAttribute("booking") BookingDto bookingDto) {
-        hotelService.saveBooking(bookingDto);
+    public String saveBooking(@ModelAttribute("booking") BookingDto bookingDto, Authentication authentication) {
+        String email = authentication.getName();
+        hotelService.saveBooking(bookingDto, email);
         return Redirect.HOME;
     }
 

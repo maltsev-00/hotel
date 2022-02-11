@@ -40,12 +40,12 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public void saveBooking(BookingDto bookingDto) {
-        bookingService.saveBooking(bookingDto);
+    public void saveBooking(BookingDto bookingDto,String email) {
+        bookingService.saveBooking(bookingDto,email);
     }
 
     @Override
     public List<MenuItem> getMenuItems() {
-        return bookingService.findAll();
+        return bookingService.findAllMenuItems();
     }
 }

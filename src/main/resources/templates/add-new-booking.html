@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -20,10 +21,19 @@
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/hotels/offers" class="nav-link px-2 link-dark">Offers</a></li>
             <li><a href="/hotels/offers/cost" class="nav-link px-2 link-dark">Cost</a></li>
+            <li><a href="/users/area" class="nav-link px-2 link-dark">Personal area </a></li>
+
         </ul>
 
         <div class="col-md-3 text-end">
-            <a href="/logout" class="btn btn-outline-primary me-2"> <i class="fa fa-arrow-circle-o-left"></i>Log out</a>
+            <div sec:authorize="hasRole('ADMIN')">
+                <a href="/admin/menu" class="btn btn-outline-primary me-2">Menu</a>
+                <a href="/admin/" class="btn btn-outline-primary me-2">Admin</a>
+                <a href="/logout" class="btn btn-outline-primary me-2"> <i class="fa fa-arrow-circle-o-left"></i>Log out</a>
+            </div>
+            <div sec:authorize="hasRole('USER')">
+                <a href="/logout" class="btn btn-outline-primary me-2"> <i class="fa fa-arrow-circle-o-left"></i>Log out</a>
+            </div>
         </div>
     </header>
 </div>
@@ -72,13 +82,13 @@
                                 <div class="col-12">
                                     <label for="animal" class="form-label">Name animal </label>
                                     <input type="text" class="form-control" th:field="*{nameAnimal}" id="animal"
-                                           placeholder="Animal">
+                                           placeholder="">
                                 </div>
 
                                 <div class="col-12">
                                     <label for="typeAnimal" class="form-label">Type animal </label>
                                     <input type="text" class="form-control" th:field="*{typeAnimal}" id="typeAnimal"
-                                           placeholder="Type Animal">
+                                           placeholder="">
                                 </div>
 
                                 <div class="col-12">

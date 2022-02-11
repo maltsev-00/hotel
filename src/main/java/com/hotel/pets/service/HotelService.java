@@ -14,7 +14,7 @@ public interface HotelService {
 
     List<CostOffersDto> getOffersCost();
 
-    void saveBooking(BookingDto bookingDto);
+    void saveBooking(BookingDto bookingDto,String email);
 
     List<MenuItem> getMenuItems();
 }
