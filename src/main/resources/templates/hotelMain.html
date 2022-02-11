@@ -1,32 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Hotel</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Offers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="/hotels">MLK</a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="/hotels/offers/cost">Cost</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/hotels/offers/">Offers</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <a href="/logout" class="btn btn-primary\"> <i class="fa fa-arrow-circle-o-left"></i>Log out</a>
+<div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <a href="/hotels" class="navbar-brand text-black">MLK</a>
 
-        </form>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="/hotels/offers" class="nav-link px-2 link-dark">Offers</a></li>
+            <li><a href="/hotels/offers/cost" class="nav-link px-2 link-dark">Cost</a></li>
+            <li><a href="/hotels/booking" class="nav-link px-2 link-dark">Booking</a></li>
+
+
+        </ul>
+
+        <div class="col-md-3 text-end">
+            <a href="/logout" class="btn btn-outline-primary me-2"> <i class="fa fa-arrow-circle-o-left"></i>Log out</a>
+        </div>
+    </header>
+</div>
+<div class="px-4 pt-5 my-1 text-center border-bottom">
+    <h1 class="display-4 fw-bold">About our hotel</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4"> The MLK hotel has been operating since 2015. Boutique hotel in the quiet center of Minsk -
+            since 2018 The cat rooms are made of toughened thick glass and each is equipped with a security camera.
+            The hotel feeds and cares for the guests constantly, a comfortable temperature for cats is also maintained,
+            there is natural lighting and ventilation.
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+            <a href="/hotels/booking" class="btn btn-primary btn-lg px-4 me-sm-3">Apply for</a>
+        </div>
     </div>
-</nav>
+</div>
+
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img th:src="@{/img/cat.png}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700"
+                 height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">Our pet hotel has the opportunity to benefit</h1>
+            <p class="lead">Our clinic employs specialists with veterinary education. In the event of an illness, the
+                pet will be able to quickly provide the necessary assistance. Therefore, leaving the animal in a hotel
+                is even better than with friends, who may be confused when the animal is sick.
+                Before providing the service, we draw up an agreement with you, which clearly defines the rights and
+                obligations of the parties. An act of transfer of the animal is also drawn up. All this ensures the
+                security of the service provided.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="/hotels/booking" class="btn btn-primary btn-lg px-4 me-md-2">Apply for</a>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3">Feedback</h1>
+            <p class="lead">If you have any questions or wishes, you can write to us and we will give you an answer as soon as possible.</p>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+            <form th:action="@{/questions/}" th:object="${question}" method="post">
+                <form class="p-2 p-md-4 border rounded-3 bg-light">
+                    <input type="email" class="form-control" th:field="*{email}" id="floatingInput"
+                           placeholder="email@example.com">
+                    <br>
+                    <input type="text" class="form-control" th:field="*{message}" id="floatingPassword"
+                           placeholder="message">
+                    <br>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Send</button>
+                </form>
+            </form>
+        </div>
+    </div>
+</div>
+
 </body>
+
+</html>

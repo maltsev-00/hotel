@@ -1,12 +1,20 @@
 package com.hotel.pets.controller;
 
 import com.hotel.pets.model.PageName;
+import com.hotel.pets.model.Redirect;
+import com.hotel.pets.model.dto.BookingDto;
+import com.hotel.pets.model.dto.QuestionUserDto;
+import com.hotel.pets.model.entity.MenuItem;
 import com.hotel.pets.service.HotelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/hotels")
@@ -17,6 +25,7 @@ public class HotelController {
 
     @GetMapping
     public String mainPage(Model model) {
+        model.addAttribute("question", new QuestionUserDto());
         return PageName.HOME;
     }
 
@@ -30,6 +39,21 @@ public class HotelController {
     public String offersCost(Model model) {
         model.addAttribute("offersCost", hotelService.getOffersCost());
         return PageName.OFFERS_COST;
+    }
+
+    @GetMapping("/booking")
+    public String newBooking(Model model) {
+        model.addAttribute("booking", new BookingDto());
+        List<MenuItem> menuItems = hotelService.getMenuItems();
+        model.addAttribute("menu", menuItems);
+        model.addAttribute("sizeMenu", menuItems.size());
+        return "add-new-booking";
+    }
+
+    @PostMapping("/booking")
+    public String saveBooking(@ModelAttribute("booking") BookingDto bookingDto) {
+        hotelService.saveBooking(bookingDto);
+        return Redirect.HOME;
     }
 
 }

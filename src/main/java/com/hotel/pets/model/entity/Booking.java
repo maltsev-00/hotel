@@ -1,6 +1,7 @@
 package com.hotel.pets.model.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,18 +15,23 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nameAnimal;
     private String typeAnimal;
-    private LocalDateTime beginDate;
-    private LocalDateTime endDate;
+    private int countDay;
     private String telephoneNumber;
     private String infoAboutAnimal;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "booking_id", referencedColumnName = "id")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "booking_menu",
+            joinColumns = @JoinColumn(
+                    name = "booking_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "menu_item_id", referencedColumnName = "id"))
     private Set<MenuItem> menuItems = new HashSet<>();
     private BigDecimal finalCost;
 }

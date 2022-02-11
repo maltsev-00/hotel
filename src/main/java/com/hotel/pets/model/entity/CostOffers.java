@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -20,5 +20,7 @@ public class CostOffers {
     private Long id;
     private String name;
     private BigDecimal cost;
-    private String additionally;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "cost_offers_id", referencedColumnName = "id")
+    private Set<AdditionallyOffers> additionallyOffers = new HashSet<>();
 }
