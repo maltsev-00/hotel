@@ -16,11 +16,12 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class HotelServiceImpl implements HotelService {
+public class OfferServiceImpl implements OfferService {
 
     private final OfferRepository offerRepository;
     private final OfferTypeRepository offerTypeRepository;
     private final CostOffersService costOffersService;
+
     private final BookingService bookingService;
 
     @Override

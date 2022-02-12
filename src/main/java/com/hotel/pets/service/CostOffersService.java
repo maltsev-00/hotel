@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CostOffersService {
     List<CostOffersDto> getOffersCost();
+
+    void deleteCostOffersByName(String name);
 }

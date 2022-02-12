@@ -8,7 +8,7 @@ import com.hotel.pets.model.entity.Offer;
 import java.util.List;
 import java.util.Map;
 
-public interface HotelService {
+public interface OfferService {
 
     Map<String, List<Offer>> getOffers();
 

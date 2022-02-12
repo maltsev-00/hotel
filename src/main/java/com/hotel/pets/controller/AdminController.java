@@ -3,6 +3,7 @@ package com.hotel.pets.controller;
 import com.hotel.pets.model.entity.MenuItem;
 import com.hotel.pets.service.BookingService;
 import com.hotel.pets.service.CostOffersService;
+import com.hotel.pets.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +16,12 @@ public class AdminController {
 
     private final BookingService bookingService;
     private final CostOffersService costOffersService;
+    private final QuestionService questionService;
 
     @GetMapping
     public String homepage(Model model) {
         model.addAttribute("costs", costOffersService.getOffersCost());
+        model.addAttribute("questions", questionService.findAll());
         return "adminHome";
     }
 
@@ -41,4 +44,9 @@ public class AdminController {
         return "redirect:/admin/menu";
     }
 
+    @PostMapping("/offers/cost/{name}")
+    public String deleteOffersCost(@PathVariable("name") String name) {
+        costOffersService.deleteCostOffersByName(name);
+        return "redirect:/admin/menu";
+    }
 }

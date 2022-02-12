@@ -13,7 +13,7 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     @NotEmpty
     private String name;

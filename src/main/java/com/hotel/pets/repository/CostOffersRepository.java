@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CostOffersRepository extends JpaRepository<CostOffers, Long> {
+    CostOffers findCostOffersByName(String name);
 }

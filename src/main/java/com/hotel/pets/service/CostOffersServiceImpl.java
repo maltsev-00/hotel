@@ -2,6 +2,7 @@ package com.hotel.pets.service;
 
 import com.hotel.pets.converter.CostOffersConverter;
 import com.hotel.pets.model.dto.CostOffersDto;
+import com.hotel.pets.model.entity.CostOffers;
 import com.hotel.pets.repository.CostOffersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,5 +19,11 @@ public class CostOffersServiceImpl implements CostOffersService {
     @Override
     public List<CostOffersDto> getOffersCost() {
         return costOffersConverter.convertToDto(costOffersRepository.findAll());
+    }
+
+    @Override
+    public void deleteCostOffersByName(String name) {
+        CostOffers costOffersByName = costOffersRepository.findCostOffersByName(name);
+        costOffersRepository.delete(costOffersByName);
     }
 }

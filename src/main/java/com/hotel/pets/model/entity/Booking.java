@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -32,6 +34,6 @@ public class Booking {
                     name = "booking_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "menu_item_id", referencedColumnName = "id"))
-    private Set<MenuItem> menuItems = new HashSet<>();
+    private List<MenuItem> menuItems = new ArrayList<>();
     private BigDecimal finalCost;
 }

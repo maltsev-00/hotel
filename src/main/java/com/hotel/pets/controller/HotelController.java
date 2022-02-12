@@ -5,7 +5,7 @@ import com.hotel.pets.model.Redirect;
 import com.hotel.pets.model.dto.BookingDto;
 import com.hotel.pets.model.dto.QuestionUserDto;
 import com.hotel.pets.model.entity.MenuItem;
-import com.hotel.pets.service.HotelService;
+import com.hotel.pets.service.OfferService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -22,30 +22,30 @@ import java.util.List;
 @RequiredArgsConstructor
 public class HotelController {
 
-    private final HotelService hotelService;
+    private final OfferService offerService;
 
     @GetMapping
-    public String mainPage(Model model, Authentication authentication) {
+    public String mainPage(Model model) {
         model.addAttribute("question", new QuestionUserDto());
         return PageName.HOME;
     }
 
     @GetMapping("/offers")
     public String offers(Model model) {
-        model.addAttribute("offers", hotelService.getOffers());
+        model.addAttribute("offers", offerService.getOffers());
         return PageName.HOTEL_OFFERS;
     }
 
     @GetMapping("offers/cost")
     public String offersCost(Model model) {
-        model.addAttribute("offersCost", hotelService.getOffersCost());
+        model.addAttribute("offersCost", offerService.getOffersCost());
         return PageName.OFFERS_COST;
     }
 
     @GetMapping("/booking")
     public String newBooking(Model model) {
         model.addAttribute("booking", new BookingDto());
-        List<MenuItem> menuItems = hotelService.getMenuItems();
+        List<MenuItem> menuItems = offerService.getMenuItems();
         model.addAttribute("menu", menuItems);
         model.addAttribute("sizeMenu", menuItems.size());
         return "add-new-booking";
@@ -54,7 +54,7 @@ public class HotelController {
     @PostMapping("/booking")
     public String saveBooking(@ModelAttribute("booking") BookingDto bookingDto, Authentication authentication) {
         String email = authentication.getName();
-        hotelService.saveBooking(bookingDto, email);
+        offerService.saveBooking(bookingDto, email);
         return Redirect.HOME;
     }
 
