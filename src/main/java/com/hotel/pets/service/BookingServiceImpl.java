@@ -23,7 +23,8 @@ public class BookingServiceImpl implements BookingService {
     public void saveBooking(BookingDto bookingDto, String email) {
 
         MenuItem menuItemById = menuItemRepository.findMenuItemById(bookingDto.getIdMenu());
-        BigDecimal finalCost =  menuItemById.getCost().multiply(BigDecimal.valueOf(bookingDto.getCountDay()));
+        BigDecimal finalCost = menuItemById.getCost().multiply(BigDecimal.valueOf(bookingDto.getCountDay()));
+
         Booking booking = Booking.builder()
                 .countDay(bookingDto.getCountDay())
                 .infoAboutAnimal(bookingDto.getInfoAboutAnimal())
@@ -36,9 +37,7 @@ public class BookingServiceImpl implements BookingService {
 
         User user = userService.findUserByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Email " + email + " not found"));
-
         user.getBookings().add(booking);
-
         userService.save(user);
     }
 

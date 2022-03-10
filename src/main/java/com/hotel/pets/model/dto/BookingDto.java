@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookingDto {
-
     private String firstName;
     private String lastName;
     private String nameAnimal;

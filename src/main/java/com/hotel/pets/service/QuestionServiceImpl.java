@@ -20,7 +20,6 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public void saveQuestion(QuestionUserDto questionUserDto) {
         QuestionUser questionUser = questionUserConverter.convertToEntity(questionUserDto);
-
         questionUser.setTime(LocalDate.now());
         questionUserRepository.save(questionUser);
     }

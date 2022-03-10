@@ -28,6 +28,7 @@ public class OfferServiceImpl implements OfferService {
     public Map<String, List<Offer>> getOffers() {
         List<TypeOffer> typeOffers = offerTypeRepository.findAll();
         Map<String, List<Offer>> offerListMap = new HashMap<>();
+
         typeOffers.forEach(typeOffer -> {
             var type = typeOffer.getName();
             offerListMap.put(type, offerRepository.findOfferByTypeOfferNameAndAccess(type, true));
@@ -41,8 +42,8 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public void saveBooking(BookingDto bookingDto,String email) {
-        bookingService.saveBooking(bookingDto,email);
+    public void saveBooking(BookingDto bookingDto, String email) {
+        bookingService.saveBooking(bookingDto, email);
     }
 
     @Override
